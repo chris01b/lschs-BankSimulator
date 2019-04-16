@@ -19,10 +19,10 @@ public class Main {
         Interest interest = new Interest();
 
         System.out.println("Investment type:\n" +
-                "Continuous (c)\n" +
-                "Yearly (y)\n" +
-                "Monthly (m)\n" +
-                "Daily (d)");
+                "- Continuous (c)\n" +
+                "- Yearly (y)\n" +
+                "- Monthly (m)\n" +
+                "- Daily (d)");
         userInput.nextLine();
         switch (userInput.nextLine()) {
             case "c":
@@ -60,10 +60,10 @@ public class Main {
                 case INTEREST:
                     teller.setupInterest(bank, interest);
                     break;
-                case MORTGAGE:
-                    teller.setupMortgage(bank, interest);
+                case LOAN:
+                    teller.setupLoan(bank, interest);
                     break;
-                case LEAVE:
+                case EXIT:
                     teller.farewell();
                     System.exit(0);
                     break;

@@ -3,11 +3,11 @@ package org.chrisbiddle.banksim;
 import java.util.Scanner;
 
 enum Facility {
-    init, DEPOSIT, WITHDRAW, MORTGAGE, INTEREST, LEAVE
+    init, DEPOSIT, WITHDRAW, LOAN, INTEREST, EXIT
 }
 
 public class Bank {
-    double balance;
+    private double balance;
 
     public Bank(double balance) {
         this.balance = balance;
@@ -16,9 +16,9 @@ public class Bank {
     public Facility getFacility() {
         System.out.println("- Deposit money (d)");
         System.out.println("- Withdraw money (w)");
-        System.out.println("- Setup a mortgage (m)");
+        System.out.println("- Create a loan (l)");
         System.out.println("- Leave money in the bank for a time (t)");
-        System.out.println("- Leave the bank (l)");
+        System.out.println("- Exit the bank (e)");
 
         Scanner userInput = new Scanner(System.in);
         String optionInput = userInput.nextLine();
@@ -31,14 +31,14 @@ public class Bank {
             case "w":
                 option = Facility.WITHDRAW;
                 break;
-            case "m":
-                option = Facility.MORTGAGE;
+            case "l":
+                option = Facility.LOAN;
                 break;
             case "t":
                 option = Facility.INTEREST;
                 break;
-            case "l":
-                option = Facility.LEAVE;
+            case "e":
+                option = Facility.EXIT;
                 break;
         }
         return option;

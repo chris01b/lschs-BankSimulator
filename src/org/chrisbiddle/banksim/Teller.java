@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Teller {
-    String name;
-    String tellerName;
+    private String name;
+    private String tellerName;
 
     public Teller(String name, String tellerName) {
         this.name = name;
@@ -60,11 +60,10 @@ public class Teller {
         this.tellBalance(bank);
     }
 
-    public void setupMortgage(Bank bank, Interest interest) {
-        // TODO: correct the mortgage math. It currently uses the opposite of the simple interest
+    public void setupLoan(Bank bank, Interest interest) {
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("\nHow long would you like the mortgage to last?");
+        System.out.println("\nHow many years would you like to take out the loan for?");
         interest.setTime(userInput.nextDouble());
         userInput.nextLine();
 
