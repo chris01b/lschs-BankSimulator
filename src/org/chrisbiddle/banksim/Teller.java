@@ -54,7 +54,7 @@ public class Teller {
         userInput.nextLine();
 
         interest.setPrinciple(bank.getBalance());
-        double money = interest.evaluate();
+        double money = interest.evaluate(Type.INTEREST);
         bank.addMoney(money);
 
         this.tellBalance(bank);
@@ -67,8 +67,11 @@ public class Teller {
         interest.setTime(userInput.nextDouble());
         userInput.nextLine();
 
-        interest.setPrinciple(bank.getBalance());
-        double money = interest.evaluate();
+        System.out.println("\nHow much money would you like loaned to you?");
+        interest.setPrinciple(userInput.nextDouble());
+        userInput.nextLine();
+
+        double money = interest.evaluate(Type.LOAN);
         bank.withdrawMoney(money);
 
         this.tellBalance(bank);

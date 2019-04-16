@@ -41,7 +41,11 @@ public class Main {
 
         // Interest Rate
         System.out.println("Bank's interest rate: ");
-        interest.setRate(userInput.nextDouble() / 100);
+        interest.setInterestRate(userInput.nextDouble() / 100);
+        userInput.nextLine();
+
+        System.out.println("Bank's loan rate: ");
+        interest.setLoanRate(userInput.nextDouble() / 100);
         userInput.nextLine();
 
         System.out.println();

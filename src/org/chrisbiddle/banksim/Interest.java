@@ -8,6 +8,9 @@ package org.chrisbiddle.banksim;
 enum Interval {
     CONTINUOUS, DAILY, MONTHLY, YEARLY
 }
+enum Type {
+    INTEREST, LOAN
+}
 
 /**
  * Calculates how much you owe
@@ -15,7 +18,8 @@ enum Interval {
 public class Interest {
     private Interval interval;
     private double principle;
-    private double rate;
+    private double interestRate;
+    private double loanRate;
     private double time;
 
     /**
@@ -35,8 +39,12 @@ public class Interest {
     /**
      * Sets the percentage rate of interest
      */
-    public void setRate(double rate) {
-        this.rate = rate;
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public void setLoanRate(double loanRate) {
+        this.loanRate = loanRate;
     }
 
     /**
@@ -49,20 +57,30 @@ public class Interest {
     /**
      * Returns how much money you owe after the time period
      */
-    public double evaluate() {
+    public double evaluate(Type type) {
+        double rate = 0;
+        switch(type) {
+            case INTEREST:
+                rate = this.interestRate;
+                break;
+            case LOAN:
+                rate = this.loanRate;
+                break;
+        }
+
         double output = 0;
         switch(this.interval) {
             case CONTINUOUS:
-                output = this.principle * Math.exp(this.rate * this.time);
+                output = this.principle * Math.exp(rate * this.time);
                 break;
             case YEARLY:
-                output = this.principle * Math.pow(1 + (this.rate), this.time);
+                output = this.principle * Math.pow(1 + rate, this.time);
                 break;
             case MONTHLY:
-                output = this.principle * Math.pow(1 + (this.rate / 12), 12 * this.time);
+                output = this.principle * Math.pow(1 + rate / 12, 12 * this.time);
                 break;
             case DAILY:
-                output = this.principle * Math.pow(1 + (this.rate / 365), 365 * this.time);
+                output = this.principle * Math.pow(1 + rate / 365, 365 * this.time);
                 break;
         }
         return output - this.principle;
