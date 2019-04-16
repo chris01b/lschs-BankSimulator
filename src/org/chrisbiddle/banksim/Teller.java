@@ -24,7 +24,7 @@ public class Teller {
 
     public void tellBalance(Bank bank) {
         BigDecimal formatted = new BigDecimal(bank.getBalance()).setScale(2, RoundingMode.HALF_EVEN);
-        System.out.println("\nYou now have $" + formatted.doubleValue() + " in your account.");
+        System.out.println("\nYou now have $" + formatted + " in your account.");
     }
 
     public void depositMoney(Bank bank) {
