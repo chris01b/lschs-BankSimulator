@@ -70,9 +70,6 @@ public class Interest {
 
         double output = 0;
         switch(this.interval) {
-            case CONTINUOUS:
-                output = this.principle * Math.exp(rate * this.time);
-                break;
             case YEARLY:
                 output = this.principle * Math.pow(1 + rate, this.time);
                 break;
@@ -81,6 +78,9 @@ public class Interest {
                 break;
             case DAILY:
                 output = this.principle * Math.pow(1 + rate / 365, 365 * this.time);
+                break;
+            case CONTINUOUS:
+                output = this.principle * Math.exp(rate * this.time);
                 break;
         }
         return output - this.principle;
