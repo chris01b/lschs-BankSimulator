@@ -22,6 +22,7 @@ public class Bank {
 
         Scanner userInput = new Scanner(System.in);
         String optionInput = userInput.nextLine();
+        System.out.println();
 
         Facility option = Facility.init;
         switch (optionInput) {

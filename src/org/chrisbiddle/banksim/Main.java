@@ -11,7 +11,7 @@ public class Main {
         String name = userInput.nextLine();
 
         System.out.print("Teller's name: ");
-        Teller teller = new Teller(name, userInput.nextLine());
+        Teller teller = new Teller(userInput.nextLine(), name);
 
         System.out.print("Bank account's balance: ");
         Bank bank = new Bank(userInput.nextDouble());
@@ -19,10 +19,10 @@ public class Main {
         Interest interest = new Interest();
 
         System.out.println("Investment type:\n" +
-                "- Continuous (c)\n" +
                 "- Yearly (y)\n" +
                 "- Monthly (m)\n" +
-                "- Daily (d)");
+                "- Daily (d)\n" +
+                "- Continuous (c)");
         userInput.nextLine();
         switch (userInput.nextLine()) {
             case "c":
@@ -47,9 +47,12 @@ public class Main {
         System.out.println("Bank's loan rate: ");
         interest.setLoanRate(userInput.nextDouble() / 100);
         userInput.nextLine();
+        System.out.println("-----------------\n");
+
+        System.out.println("*You walk into the bank*");
 
         System.out.println();
-        teller.welcome(name);
+        teller.welcome();
 
         while(true) {
             Facility facility = bank.getFacility();
@@ -69,6 +72,8 @@ public class Main {
                     break;
                 case EXIT:
                     teller.farewell();
+                    System.out.println();
+                    System.out.println("*You leave the bank*");
                     System.exit(0);
                     break;
             }

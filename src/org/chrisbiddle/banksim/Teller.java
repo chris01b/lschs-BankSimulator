@@ -2,36 +2,37 @@ package org.chrisbiddle.banksim;
 
 import java.util.Scanner;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 public class Teller {
     private String name;
     private String tellerName;
 
-    public Teller(String name, String tellerName) {
-        this.name = name;
+    public Teller(String tellerName, String name) {
         this.tellerName = tellerName;
+        this.name = name;
     }
 
-    public void welcome(String name) {
-        System.out.printf("Welcome to the bank, %s!\n", name);
-        System.out.println("What can I help you with?");
+    public void welcome() {
+        System.out.printf("%s: Welcome to the bank, %s!\n", this.tellerName, name);
+        System.out.printf("%s: What can I help you with?\n", this.tellerName);
     }
 
     public void farewell() {
-        System.out.printf("\nGoodbye, %s!", name);
+        System.out.printf("%s: Goodbye, %s!\n", this.tellerName, name);
     }
 
     public void tellBalance(Bank bank) {
-        BigDecimal formatted = new BigDecimal(bank.getBalance()).setScale(2, RoundingMode.HALF_EVEN);
-        System.out.println("\nYou now have $" + formatted + " in your account.");
+        String formattedBalance = NumberFormat.getCurrencyInstance().format(new BigDecimal(bank.getBalance()));
+        System.out.printf("%s: You now have %s in your account.\n", this.tellerName, formattedBalance);
     }
 
     public void depositMoney(Bank bank) {
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("\nHow much money would you like to deposit?");
+        System.out.printf("%s: How much money would you like to deposit?\n", this.tellerName);
         bank.addMoney(userInput.nextDouble());
+        System.out.println();
 
         this.tellBalance(bank);
     }
@@ -39,8 +40,9 @@ public class Teller {
     public void withdrawMoney(Bank bank) {
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("\nHow much money would you like to withdraw?");
+        System.out.printf("%s: How much money would you like to withdraw?\n", this.tellerName);
         bank.withdrawMoney(userInput.nextDouble());
+        System.out.println();
 
         this.tellBalance(bank);
     }
@@ -49,9 +51,9 @@ public class Teller {
         Scanner userInput = new Scanner(System.in);
 
         // Time Period
-        System.out.println("\nHow many years would like to invest for?");
+        System.out.printf("%s: How many years would like to invest for?\n", this.tellerName);
         interest.setTime(userInput.nextDouble());
-        userInput.nextLine();
+        System.out.println();
 
         interest.setPrinciple(bank.getBalance());
         double money = interest.evaluate(Type.INTEREST);
@@ -63,13 +65,13 @@ public class Teller {
     public void setupLoan(Bank bank, Interest interest) {
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("\nHow many years would you like to take out the loan for?");
+        System.out.printf("%s: How many years would you like to take out the loan for?\n", this.tellerName);
         interest.setTime(userInput.nextDouble());
-        userInput.nextLine();
+        System.out.println();
 
-        System.out.println("\nHow much money would you like loaned to you?");
+        System.out.printf("%s: How much money would you like loaned to you?\n", this.tellerName);
         interest.setPrinciple(userInput.nextDouble());
-        userInput.nextLine();
+        System.out.println();
 
         double money = interest.evaluate(Type.LOAN);
         bank.withdrawMoney(money);
