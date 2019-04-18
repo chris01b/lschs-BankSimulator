@@ -5,21 +5,21 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 
 public class Teller {
-    private String name;
+    private String customer;
     private String tellerName;
 
-    public Teller(String tellerName, String name) {
+    public Teller(String tellerName, String customer) {
         this.tellerName = tellerName;
-        this.name = name;
+        this.customer = customer;
     }
 
     public void welcome() {
-        System.out.printf("%s: Welcome to the bank, %s!\n", this.tellerName, name);
+        System.out.printf("%s: Welcome to the bank, %s!\n", this.tellerName, this.customer);
         System.out.printf("%s: What can I help you with?\n", this.tellerName);
     }
 
     public void farewell() {
-        System.out.printf("%s: Goodbye, %s!\n", this.tellerName, name);
+        System.out.printf("%s: Goodbye, %s!\n", this.tellerName, this.customer);
     }
 
     public void tellBalance(Bank bank) {
