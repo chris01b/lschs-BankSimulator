@@ -8,6 +8,10 @@ package org.chrisbiddle.banksim;
 enum Interval {
     CONTINUOUS, DAILY, MONTHLY, YEARLY
 }
+
+/**
+ * A constant list of uses of interest
+ */
 enum Type {
     INTEREST, LOAN
 }
@@ -24,13 +28,15 @@ public class Interest {
 
     /**
      * Sets the principle money that is taken out
+     * @param principle The principle to start out with
      */
     public void setPrinciple(double principle) {
         this.principle = principle;
     }
 
     /**
-     * Sets the type of loan
+     * Sets the interval
+     * @param interval How often the load is calculated
      */
     public void setInterval(Interval interval) {
         this.interval = interval;
@@ -38,17 +44,23 @@ public class Interest {
 
     /**
      * Sets the percentage rate of interest
+     * @param interestRate The interest's rate
      */
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
 
+    /**
+     * Sets the loan rate
+     * @param loanRate The loan's rate
+     */
     public void setLoanRate(double loanRate) {
         this.loanRate = loanRate;
     }
 
     /**
-     * Sets the amount of time for the loan
+     * Sets the amount of time the interest lasts
+     * @param time The duration of the interest
      */
     public void setTime(double time) {
         this.time = time;
@@ -56,6 +68,7 @@ public class Interest {
 
     /**
      * Returns how much money you owe after the time period
+     * @param type The type of interest
      */
     public double evaluate(Type type) {
         double rate = 0;

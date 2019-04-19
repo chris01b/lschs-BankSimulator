@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
+        /* Setup Bank */
         System.out.print("Your name: ");
         String name = userInput.nextLine();
 
@@ -39,21 +40,23 @@ public class Main {
                 break;
         }
 
-        // Interest Rate
         System.out.println("Bank's interest rate: ");
         interest.setInterestRate(userInput.nextDouble() / 100);
-        userInput.nextLine();
 
         System.out.println("Bank's loan rate: ");
         interest.setLoanRate(userInput.nextDouble() / 100);
-        userInput.nextLine();
+        System.out.println();
+
         System.out.println("-----------------\n");
+
+        /* Simulates what happens when you walk into the bank */
 
         System.out.println("*You walk into the bank*");
 
         System.out.println();
         teller.welcome();
 
+        // The loop that surrounds the majority of the program
         while(true) {
             Facility facility = bank.getFacility();
 

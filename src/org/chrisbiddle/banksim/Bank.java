@@ -2,17 +2,31 @@ package org.chrisbiddle.banksim;
 
 import java.util.Scanner;
 
+/**
+ * A constant list of things that you can do in the bank
+ */
 enum Facility {
     init, DEPOSIT, WITHDRAW, LOAN, INTEREST, EXIT
 }
 
+/**
+ * Does the functions of a bank
+ */
 public class Bank {
     private double balance;
 
+    /**
+     * Creates new bank object
+     * @param balance The initial balance of the bank account
+     */
     public Bank(double balance) {
         this.balance = balance;
     }
 
+    /**
+     * Prompts the user for what he wants to do at the bank
+     * @return The facility that the user chooses
+     */
     public Facility getFacility() {
         System.out.println("- Deposit money (d)");
         System.out.println("- Withdraw money (w)");
@@ -45,13 +59,26 @@ public class Bank {
         return option;
     }
 
+    /**
+     * @return The balance of the account
+     */
     public double getBalance() {
         return this.balance;
     }
 
+    /**
+     * Adds money to the account
+     * @param money Money to add
+     */
     public void addMoney(double money) {
         this.balance += money;
     }
 
-    public void withdrawMoney(double money) { this.balance -= money; }
+    /**
+     * Withdraws money from the account
+     * @param money Money to withdraw
+     */
+    public void withdrawMoney(double money) {
+        this.balance -= money;
+    }
 }

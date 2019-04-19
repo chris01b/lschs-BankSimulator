@@ -4,29 +4,50 @@ import java.util.Scanner;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 
+/**
+ * Does all of the functions that a teller would do
+ */
 public class Teller {
     private String customer;
     private String tellerName;
 
+    /**
+     * @param tellerName Takes the teller's name
+     * @param customer Takes the customer's name
+     */
     public Teller(String tellerName, String customer) {
         this.tellerName = tellerName;
         this.customer = customer;
     }
 
+    /**
+     * Welcomes the customer by name
+     */
     public void welcome() {
         System.out.printf("%s: Welcome to the bank, %s!\n", this.tellerName, this.customer);
         System.out.printf("%s: What can I help you with?\n", this.tellerName);
     }
 
+    /**
+     * Wishes the customer goodbye by name
+     */
     public void farewell() {
         System.out.printf("%s: Goodbye, %s!\n", this.tellerName, this.customer);
     }
 
+    /**
+     * Tells the user his balance with correct rounding and currency
+     * @param bank The bank object
+     */
     public void tellBalance(Bank bank) {
         String formattedBalance = NumberFormat.getCurrencyInstance().format(new BigDecimal(bank.getBalance()));
         System.out.printf("%s: You now have %s in your account.\n", this.tellerName, formattedBalance);
     }
 
+    /**
+     * Deposits money into the bank account
+     * @param bank The bank object
+     */
     public void depositMoney(Bank bank) {
         Scanner userInput = new Scanner(System.in);
 
@@ -37,6 +58,10 @@ public class Teller {
         this.tellBalance(bank);
     }
 
+    /**
+     * Withdraws money from the bank account
+     * @param bank The bank object
+     */
     public void withdrawMoney(Bank bank) {
         Scanner userInput = new Scanner(System.in);
 
@@ -47,6 +72,11 @@ public class Teller {
         this.tellBalance(bank);
     }
 
+    /**
+     * Lets the customer wait for his account's balance to grow
+     * @param bank The bank object
+     * @param interest The interest object for the interest
+     */
     public void setupInterest(Bank bank, Interest interest) {
         Scanner userInput = new Scanner(System.in);
 
@@ -62,6 +92,11 @@ public class Teller {
         this.tellBalance(bank);
     }
 
+    /**
+     * Lets the customer take out money for a time
+     * @param bank The bank object
+     * @param interest The interest object for the loan
+     */
     public void setupLoan(Bank bank, Interest interest) {
         Scanner userInput = new Scanner(System.in);
 
