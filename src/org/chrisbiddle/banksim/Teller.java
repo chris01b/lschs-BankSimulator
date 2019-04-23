@@ -36,6 +36,13 @@ public class Teller {
     }
 
     /**
+     * Tells the customer to do something in the bank
+     */
+    public void getMad() {
+        System.out.printf("%s: You can't just loiter here, you know.\n", this.tellerName);
+    }
+
+    /**
      * Tells the user his balance with correct rounding and currency
      * @param bank The bank object
      */

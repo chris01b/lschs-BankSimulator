@@ -3,7 +3,8 @@ package org.chrisbiddle.banksim;
 // TODO: Integreate "implements"
 
 /**
- * A constant list of interval types available
+ * A constant list of interval types availablen
+        switch (
  */
 enum Interval {
     CONTINUOUS, DAILY, MONTHLY, YEARLY

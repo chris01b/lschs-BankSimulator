@@ -73,6 +73,9 @@ public class Main {
                 case LOAN:
                     teller.setupLoan(bank, interest);
                     break;
+                case NOTHING:
+                    teller.getMad();
+                    break;
                 case EXIT:
                     teller.farewell();
                     System.out.println();

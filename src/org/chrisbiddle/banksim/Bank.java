@@ -6,7 +6,7 @@ import java.util.Scanner;
  * A constant list of things that you can do in the bank
  */
 enum Facility {
-    init, DEPOSIT, WITHDRAW, LOAN, INTEREST, EXIT
+    NOTHING, DEPOSIT, WITHDRAW, LOAN, INTEREST, EXIT
 }
 
 /**
@@ -38,7 +38,7 @@ public class Bank {
         String optionInput = userInput.nextLine();
         System.out.println();
 
-        Facility option = Facility.init;
+        Facility option;
         switch (optionInput) {
             case "d":
                 option = Facility.DEPOSIT;
@@ -54,6 +54,9 @@ public class Bank {
                 break;
             case "e":
                 option = Facility.EXIT;
+                break;
+            default:
+                option = Facility.NOTHING;
                 break;
         }
         return option;
