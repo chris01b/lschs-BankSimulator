@@ -14,12 +14,12 @@ public class Main {
         System.out.print("Teller's name: ");
         Teller teller = new Teller(userInput.nextLine(), name);
 
-        System.out.print("Bank account's balance: ");
+        System.out.print("Bank account's balance ($): ");
         Bank bank = new Bank(userInput.nextDouble());
 
         Interest interest = new Interest();
 
-        System.out.println("Investment type:\n" +
+        System.out.println("Interest compounded:\n" +
                 "- Yearly (y)\n" +
                 "- Monthly (m)\n" +
                 "- Daily (d)\n" +
@@ -40,10 +40,10 @@ public class Main {
                 break;
         }
 
-        System.out.println("Bank's interest rate: ");
+        System.out.println("Bank's interest rate (%): ");
         interest.setInterestRate(userInput.nextDouble() / 100);
 
-        System.out.println("Bank's loan rate: ");
+        System.out.println("Bank's loan rate (%): ");
         interest.setLoanRate(userInput.nextDouble() / 100);
         System.out.println();
 
