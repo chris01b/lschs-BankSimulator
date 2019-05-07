@@ -1,3 +1,12 @@
+/*
+Bank Simulator
+Chris Biddle & Owen Verrill
+1.10.0
+
+This program simulates various functions of a bank.
+ */
+
+
 package org.chrisbiddle.banksim;
 
 import java.util.Scanner;
